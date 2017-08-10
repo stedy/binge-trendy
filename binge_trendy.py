@@ -32,15 +32,14 @@ final_df = pd.DataFrame()
 
 
 for x in season:
-    local_season, episode, rating, title = [], [], [], []
     omdb_season_url = "http://www.omdbapi.com/?i=" + imdbID + "&Season=" + str(x) + "&apikey=" + api_key
     omdb_season_url_req = requests.get(omdb_season_url)
 
-    episode.append([float(y['Episode']) for y in omdb_season_url_req.json()['Episodes']])
-    rating.append([float(y['imdbRating']) for y in omdb_season_url_req.json()['Episodes']])
-    title.append([y['Title'] for y in omdb_season_url_req.json()['Episodes']])
-    local_season.append([list(str(x) * len(omdb_season_url_req.json()['Episodes']))])
-    df = pd.DataFrame([local_season[0][0], episode[0], rating[0], title[0]])
+    episode = [float(y['Episode']) for y in omdb_season_url_req.json()['Episodes']]
+    rating = [float(y['imdbRating']) for y in omdb_season_url_req.json()['Episodes']]
+    title = [y['Title'] for y in omdb_season_url_req.json()['Episodes']]
+    local_season = [list(str(x) * len(omdb_season_url_req.json()['Episodes']))]
+    df = pd.DataFrame([local_season[0], episode, rating, title])
 
     df = df.transpose()
     df.columns = summary_list
@@ -51,9 +50,9 @@ for x in season:
     reg = linear_model.LinearRegression()
     reg.fit(y, x)
 
-    df_sorted['residual'] = x - reg.predict(y)
+    df_sorted['Residual'] = x - reg.predict(y)
 
     final_df = final_df.append(df_sorted)
 
-df_residuals = final_df.query('residual > 0.0')
-print df_residuals[['Season', 'Episode', 'Name']]
+df_residuals = final_df.query('Residual > 0.0')
+print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index = False)
