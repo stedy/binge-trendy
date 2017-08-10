@@ -3,11 +3,11 @@ A python program to help you binge watch better episodes of your favorite TV sho
 
 I use the website [GraphTV](http://graphtv.kevinformatics.com/)
 frequently to get a visual glance at if a TV show is getting better or
-worse over time. GraphTV plots the IMDb user ratings and then performs a
+worse over time. GraphTV plots the IMDb user ratings for every episode and then performs a
 [linear regression](https://en.wikipedia.org/wiki/Linear_regression) of
-the rating by the episode number to make a trend line. I have often found that
+the episode rating by the episode number to make a trend line. I have often found that
 watching the shows above the trend line means I can just watch the best
-episodes and skip the bad ones. I also wanted a good reason to check out
+episodes and skip the bad ones (i.e. the ones below the trend line). I also wanted a good reason to check out
 the excellent [OMDb API](http://www.omdbapi.com/)
 
 For example, lets say I am interested in watching the best episodes of
