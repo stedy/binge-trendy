@@ -15,7 +15,7 @@ For example, lets say I am interested in watching the best episodes of
 
 ```$python trendy_binge.py -url http://www.imdb.com/title/tt0088526/ -api your_omdb.txt -s 4```
 
-Returns to the terminal only the finest episodes of the Golden Girls of Season 4 (as decided by IMDb
+Prints to terminal only the finest episodes of the Golden Girls of Season 4 (as decided by IMDb
 members) for your viewing pleasure:
 
 
