@@ -11,11 +11,11 @@ episodes and skip the bad ones (i.e. the ones below the trend line). I also want
 the excellent [OMDb API](http://www.omdbapi.com/)
 
 For example, lets say I am interested in watching the best episodes of
-[Golden Girls](http://www.imdb.com/title/tt0088526/) season 4:
+[Golden Girls](http://www.imdb.com/title/tt0088526/) Season 4:
 
 ```$python trendy_binge.py -url http://www.imdb.com/title/tt0088526/ -api your_omdb.txt -s 4```
 
-Returns only the finest episodes of the Golden Girls (as decided by IMDb
+Returns to the terminal only the finest episodes of the Golden Girls of Season 4 (as decided by IMDb
 members) for your viewing pleasure:
 
 
