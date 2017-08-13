@@ -9,8 +9,10 @@ parser = argparse.ArgumentParser(description="""Command line utility to
 determine which TV show episodes are above the norm for a season as rated by IMDb users
 for more informed binge watching""")
 parser.add_argument('-url', help="IMDb show URL of interest")
-parser.add_argument('-key', help="Text file with OMDB API key", type=argparse.FileType("r"))
+parser.add_argument('-key', help="Text file with OMDb API key", type=argparse.FileType("r"))
 parser.add_argument('-s', help="Season of interest")
+parser.add_argument('-b', help="Episode with the highest residual", action='store_true')
+
 args = parser.parse_args()
 
 imdbID = [x for x in args.url.split("/") if re.match('tt', x)][0]
@@ -55,4 +57,8 @@ for x in season:
     final_df = final_df.append(df_sorted)
 
 df_residuals = final_df.query('Residual > 0.0')
-print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index = False)
+
+if args.b:
+    print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
+else:
+    print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
