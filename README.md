@@ -10,14 +10,13 @@ watching only the shows above the trend line means I can just watch the best
 episodes and skip the bad ones (i.e. the ones below the trend line). I
 also wanted a good reason to use [OMDb API](http://www.omdbapi.com/)
 
-For example, lets say I am interested in watching the best episodes of
-[Golden Girls](http://www.imdb.com/title/tt0088526/) Season 4:
+Of course this will only work for TV shows where you can just watch a few
+episodes here and there and not for shows like the [greatest show ever](http://www.imdb.com/title/tt0306414/)
 
-```$python trendy_binge.py -url http://www.imdb.com/title/tt0088526/ -api your_omdb.txt -s 4```
+## Examples
+Show the best episodes of [Golden Girls](http://www.imdb.com/title/tt0088526/) Season 4:
 
-This command prints to terminal only the finest episodes of the Golden Girls of Season 4 (as decided by IMDb
-members) for your viewing pleasure:
-
+```$python binge_trendy.py -url http://www.imdb.com/title/tt0088526/ -key your_omdb.txt -s 4```
 
 |   Season| Episode |                                Name|
 | -------- | :-----: | ----------------------------------:|
@@ -34,5 +33,10 @@ members) for your viewing pleasure:
 |      4  |   23  |                      Rites of Spring|
 |      4  |   24  |                     Foreign Exchange|
 
-Of course this will only work for TV shows where you can just watch a few
-episodes here and there and not for shows like the [greatest show ever](http://www.imdb.com/title/tt0306414/)
+Show the highest-rated episode ever of [MacGuyver](http://www.imdb.com/title/tt0088559/):
+
+```$python binge_trendy.py -url http://www.imdb.com/title/tt0088559/ -key your_omdb_file.txt -b```
+
+|Season| Episode |       Name | Residual|
+| -------- | :-----: | :--------: | ----------:|
+|     4   |    9 |  Cleo Rocks | 0.651865
