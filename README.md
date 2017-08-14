@@ -1,5 +1,5 @@
 # binge-trendy
-A python program to help you binge watch better episodes of your favorite TV shows
+A python program to help you binge watch smarter by only watching the best episodes of TV shows
 
 I use the website [GraphTV](http://graphtv.kevinformatics.com/)
 frequently to get a quick insight if a TV show is getting better or
@@ -16,7 +16,7 @@ episodes here and there and not for shows like the [greatest show ever](http://w
 ## Examples
 Show the best episodes of [Golden Girls](http://www.imdb.com/title/tt0088526/) Season 4:
 
-```$python binge_trendy.py -url http://www.imdb.com/title/tt0088526/ -key your_omdb.txt -s 4```
+```$python binge_trendy.py -url http://www.imdb.com/title/tt0088526/ -key your_omdb_file.txt -s 4```
 
 |   Season| Episode |                                Name|
 | -------- | :-----: | ----------------------------------:|
