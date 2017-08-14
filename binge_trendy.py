@@ -29,9 +29,7 @@ else:
     season = list(range(1, int(total_seasons) + 1))
 
 summary_list = ["Season", "Episode", "Value", "Name"]
-episodes = []
 final_df = pd.DataFrame()
-
 
 for x in season:
     omdb_season_url = "http://www.omdbapi.com/?i=" + imdbID + "&Season=" + str(x) + "&apikey=" + api_key
