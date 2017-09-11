@@ -38,8 +38,8 @@ for x in season:
     episode = [float(y['Episode']) for y in omdb_season_url_req.json()['Episodes']]
     rating = [float(y['imdbRating']) for y in omdb_season_url_req.json()['Episodes']]
     title = [y['Title'] for y in omdb_season_url_req.json()['Episodes']]
-    local_season = [list(str(x) * len(omdb_season_url_req.json()['Episodes']))]
-    df = pd.DataFrame([local_season[0], episode, rating, title])
+    local_season = [x] * len(omdb_season_url_req.json()['Episodes'])
+    df = pd.DataFrame([local_season, episode, rating, title])
 
     df = df.transpose()
     df.columns = summary_list
