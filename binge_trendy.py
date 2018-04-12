@@ -1,6 +1,7 @@
 import argparse
 import re
 import requests
+import sys
 import pandas as pd
 import numpy as np
 from sklearn import linear_model
@@ -19,7 +20,13 @@ imdbID = [x for x in args.url.split("/") if re.match('tt', x)][0]
 api_key = args.key.read().rstrip("\n")
 
 omdb_url = "http://www.omdbapi.com/?i=" + imdbID + "&apikey=" + api_key
+
 omdb_url_req = requests.get(omdb_url)
+
+if omdb_url_req.status_code != 200:
+    print "Error: https://http.cat/" + str(omdb_url_req.status_code)
+    sys.exit(1)
+
 total_seasons = omdb_url_req.json()['totalSeasons']
 
 season = None
