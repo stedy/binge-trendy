@@ -31,7 +31,7 @@ total_seasons = omdb_url_req.json()['totalSeasons']
 
 season = None
 if args.s:
-    season = list(args.s)
+    season = [args.s]
 else:
     season = list(range(1, int(total_seasons) + 1))
 
