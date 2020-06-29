@@ -27,7 +27,7 @@ if omdb_url_req.status_code != 200:
     print "Error: https://http.cat/" + str(omdb_url_req.status_code)
     sys.exit(1)
 
-total_seasons = omdb_url_req.json()['totalSeasons']
+total_seasons =  omdb_url_req.json()['totalSeasons']
 
 season = None
 if args.s:
@@ -43,7 +43,7 @@ for x in season:
     omdb_season_url_req = requests.get(omdb_season_url)
 
     episode = [float(y['Episode']) for y in omdb_season_url_req.json()['Episodes']]
-    rating = [float(y['imdbRating']) for y in omdb_season_url_req.json()['Episodes']]
+    rating = [y['imdbRating'] for y in omdb_season_url_req.json()['Episodes']]
     title = [y['Title'] for y in omdb_season_url_req.json()['Episodes']]
     local_season = [x] * len(omdb_season_url_req.json()['Episodes'])
     df = pd.DataFrame([local_season, episode, rating, title])
@@ -51,19 +51,23 @@ for x in season:
     df = df.transpose()
     df.columns = summary_list
 
+    df = df[df.Value != 'N/A']
+    df['Value'] = df['Value'].astype(float)
+
     df_sorted = df.sort_values(by='Episode')
     x = np.array(df_sorted['Value']).reshape(-1, 1)
     y = np.array(df_sorted['Episode']).reshape(-1, 1)
     reg = linear_model.LinearRegression()
-    reg.fit(y, x)
+    print len(df_sorted)
+    if len(df_sorted) > 1:
+        reg.fit(y, x)
+        df_sorted['Residual'] = x - reg.predict(y)
+        final_df = final_df.append(df_sorted)
+        df_residuals = final_df.query('Residual > 0.0')
 
-    df_sorted['Residual'] = x - reg.predict(y)
-
-    final_df = final_df.append(df_sorted)
-
-df_residuals = final_df.query('Residual > 0.0')
-
-if args.b:
-    print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
-else:
-    print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
+        if args.b:
+            print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
+        else:
+            print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
+    else:
+        print "Not enough data for this season"
