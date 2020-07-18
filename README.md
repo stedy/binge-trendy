@@ -18,20 +18,20 @@ Show the best episodes of [Golden Girls](http://www.imdb.com/title/tt0088526/) S
 
 ```$python binge_trendy.py -url http://www.imdb.com/title/tt0088526/ -key your_omdb_file.txt -s 4```
 
-|   Season| Episode |                                Name|
-| -------- | :-----: | ----------------------------------:|
-|       4 |     1 |               Yes, We Have No Havanas|
-|       4 |     2 |The Days and Nights of Sophia Petrillo|
-|       4 |     6 |              Sophia's Wedding: Part 1|
-|       4 |     9 |                       Scared Straight|
-|      4  |   11  |                          The Auction|
-|      4  |   14  |                       Love Me Tender|
-|      4  |   15  |                      Valentine's Day|
-|      4  |   19  |              Till Death Do We Volley|
-|      4  |   20  |                         High Anxiety|
-|      4  |   22  |                      Sophia's Choice|
-|      4  |   23  |                      Rites of Spring|
-|      4  |   24  |                     Foreign Exchange|
+|   Season| Episode |                                Name| Residual
+| -------- | :-----: | ----------------------------------:|  :--------:|
+|       4 |     1 |               Yes, We Have No Havanas|   0.215385|
+|       4 |     6 |              Sophia's Wedding: Part 1|   0.127692|
+|       4 |     9 |                       Scared Straight|   0.695077|
+|      4  |   11  |                          The Auction|    0.340000|
+|      4  |   14  |                       Love Me Tender|    0.307385|
+|      4  |   15  |                      Valentine's Day|    0.829846|
+|      4  |   19  |              Till Death Do We Volley|    0.519692|
+|      4  |   20  |                         High Anxiety|    0.442154|
+|      4  |   22  |                      Sophia's Choice|    0.187077|
+|      4  |   23  |                      Rites of Spring|    0.709538|
+|      4  |   24  |                     Foreign Exchange|    0.532000|
+
 
 Show the highest-rated episode ever of [MacGuyver](http://www.imdb.com/title/tt0088559/):
 
@@ -39,7 +39,7 @@ Show the highest-rated episode ever of [MacGuyver](http://www.imdb.com/title/tt0
 
 |Season| Episode |       Name | Residual|
 | -------- | :-----: | :--------: | ----------:|
-|     4   |    9 |  Cleo Rocks | 0.651865
+|    7      | 3    | Obsessed  | 1.060922
 
 Show the top ten best episodes of [The Simpsons](https://www.imdb.com/title/tt0096697/):
 

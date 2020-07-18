@@ -67,12 +67,13 @@ for x in season:
         df_sorted['Residual'] = x - reg.predict(y)
         final_df = final_df.append(df_sorted)
         df_residuals = final_df.query('Residual > 0.0')
+        df_residuals = df_residuals.drop(columns=['Value'])
 
 if args.b:
     print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
 if args.tt:
     print df_residuals.sort_values(by=['Residual'], ascending = False)[:10].to_string(index=False)
-else:
+if args.s:
     print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
     #else:
     #    print "Not enough data for this season"
