@@ -13,6 +13,7 @@ parser.add_argument('-url', help="IMDb show URL of interest")
 parser.add_argument('-key', help="Text file with OMDb API key", type=argparse.FileType("r"))
 parser.add_argument('-s', help="Season of interest")
 parser.add_argument('-b', help="Episode with the highest residual", action='store_true')
+parser.add_argument('-tt', help="List of top ten rated episodes of show", action='store_true')
 
 args = parser.parse_args()
 
@@ -57,17 +58,21 @@ for x in season:
     df_sorted = df.sort_values(by='Episode')
     x = np.array(df_sorted['Value']).reshape(-1, 1)
     y = np.array(df_sorted['Episode']).reshape(-1, 1)
-    reg = linear_model.LinearRegression()
-    print len(df_sorted)
     if len(df_sorted) > 1:
+        reg = linear_model.LinearRegression()
         reg.fit(y, x)
+        #output = pd.DataFrame([x.flatten(),y.flatten(),reg.predict(y).flatten()]).transpose()
+        #output.columns = ["x", "y", "predict"]
+        #output.to_csv("lr_testing.csv", index=False) #, output, delimiter=",")
         df_sorted['Residual'] = x - reg.predict(y)
         final_df = final_df.append(df_sorted)
         df_residuals = final_df.query('Residual > 0.0')
 
-        if args.b:
-            print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
-        else:
-            print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
-    else:
-        print "Not enough data for this season"
+if args.b:
+    print df_residuals[df_residuals['Residual'] == df_residuals['Residual'].max()].to_string(index=False)
+if args.tt:
+    print df_residuals.sort_values(by=['Residual'], ascending = False)[:10].to_string(index=False)
+else:
+    print df_residuals[['Season', 'Episode', 'Name', 'Residual']].to_string(index=False)
+    #else:
+    #    print "Not enough data for this season"
