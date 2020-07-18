@@ -46,14 +46,14 @@ Show the top ten best episodes of [The Simpsons](https://www.imdb.com/title/tt00
 ```$python binge_trendy.py -url https://www.imdb.com/title/tt0096697/ -key your_omdb_file.txt -tt```
 
 | Season| Episode|  Value|                               Name|  Residual|
-| ----- | :-----: | :---: | :--------------------------------: | -------:|
-|   27  |     9  |  8.4 |                              Barthood  1.671316|
-|   23  |     9  |  8.2 |             Holidays of Future Passed  1.349520|
-|   12  |    18  |  8.6 |                      Trilogy of Error  1.318788|
-|   30  |    10  |  7.9 |                  'Tis the 30th Season  1.262113|
-|   19  |     9  |  8.1 | Eternal Moonshine of the Simpson Mind  1.196692|
-|   26  |     6  |  7.9 |                            Simpsorama  1.195991|
-|   31  |     5  |  7.7 |                  Gorillas on the Mast  1.183386|
-|    8  |    23  |  9.3 |                         Homer's Enemy  1.168615|
-|   18  |    21  |  8.1 |                            24 Minutes  1.036194|
-|    4  |    17  |  9.1 |              Last Exit to Springfield  0.898918|
+| ----- | :-----: | :---: | --------------------------------: | -------:|
+|   27  |     9  |  8.4 |                              Barthood|  1.671316|
+|   23  |     9  |  8.2 |             Holidays of Future Passed|  1.349520|
+|   12  |    18  |  8.6 |                      Trilogy of Error|  1.318788|
+|   30  |    10  |  7.9 |                  'Tis the 30th Season|  1.262113|
+|   19  |     9  |  8.1 | Eternal Moonshine of the Simpson Mind|  1.196692|
+|   26  |     6  |  7.9 |                            Simpsorama|  1.195991|
+|   31  |     5  |  7.7 |                  Gorillas on the Mast|  1.183386|
+|    8  |    23  |  9.3 |                         Homer's Enemy|  1.168615|
+|   18  |    21  |  8.1 |                            24 Minutes|  1.036194|
+|    4  |    17  |  9.1 |              Last Exit to Springfield|  0.898918|
