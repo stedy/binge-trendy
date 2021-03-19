@@ -1,5 +1,5 @@
 # binge-trendy
-A python program to help you binge watch smarter by only listing the best episodes of TV shows
+A python program to help you binge watch smarter by only listing the best episodes of TV shows (UPDATE: now live at [bingetrendy.com](http://bingetrendy.com/))
 
 I use the website [GraphTV](http://graphtv.kevinformatics.com/)
 frequently to get a quick insight if a TV show is getting better or
